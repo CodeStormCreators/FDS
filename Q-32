@@ -1,0 +1,103 @@
+#include <iostream>
+#define size 10
+using namespace std;
+class queue
+{
+    int f = -1, r = -1;
+    int q[size];
+
+public:
+    int isempty()
+    {
+        return (f == r) ? 1 : 0;
+    }
+    int isfull()
+    {
+        return (f == r + 1) ? 1 : 0;
+    }
+    void enqueue(int x)
+    {
+        if (isfull() == 1)
+        {
+            cout << "Queue is overflow " << endl;
+        }
+        else
+        {
+            if (f == -1)
+            {
+                f++;
+                r++;
+                q[r] = x;
+            }
+            else
+            {
+                r = (r + 1) % size;
+                q[r] = x;
+            }
+        }
+    }
+    void dequeue()
+    {
+        if (isempty() == 1)
+        {
+            cout << "Queue is underflow " << endl;
+        }
+        else
+        {
+            if (r == f)
+            {
+                cout << q[f] << " Deleted " << endl;
+                r = f = -1;
+            }
+            else
+            {
+                cout << q[f] << " Deleted " << endl;
+                f = (f + 1) % size;
+            }
+        }
+    }
+    void display()
+    {
+        if (isempty() == 1)
+        {
+            cout << "Queue is underflow " << endl;
+        }
+        else
+        {
+            for (int i = f; i != r; i = (i + 1) % size)
+            {
+                cout << q[i] << " ";
+            }
+            cout << q[r] << endl;
+        }
+    }
+};
+int main()
+{
+    queue o;
+    int ch, x;
+    char ch1;
+    do
+    {
+        cout<<endl;
+        cout << "1)Add element\n2)Delete element\n3)Display" << endl;
+        cout << "enter choice ";
+        cin >> ch;
+        switch (ch)
+        {
+        case 1:
+            cout << "Enter value ";
+            cin >> x;
+            o.enqueue(x);
+            break;
+        case 2:
+            o.dequeue();
+            break;
+        case 3:
+            o.display();
+            break;
+        }
+        cout << "Do you want to continue (y/n) : ";
+        cin >> ch1;
+    } while (ch1 == 'y');
+}
