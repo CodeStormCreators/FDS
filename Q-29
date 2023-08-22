@@ -1,0 +1,101 @@
+#include <iostream>
+#define size 5
+using namespace std;
+class queue
+{
+    int f = -1, r = -1;
+    string q[size];
+
+public:
+    int isfull()
+    {
+        return (r >= size - 1) ? 1 : 0;
+    }
+    int isempty()
+    {
+        return (f == -1) ? 1 : 0;
+    }
+    void enqueue(string x)
+    {
+        if (isfull() == 1)
+        {
+            cout << "Queue is overflow : " << endl;
+        }
+        else
+        {
+            if (f == -1)
+            {
+                f++;
+            }
+            r++;
+            q[r] = x;
+        }
+    }
+    void dequeue()
+    {
+        if (isempty() == 1)
+        {
+            cout << "Queue is underflow : " << endl;
+        }
+        else
+        {
+            if (f == r)
+            {
+                cout << q[f] << " Deleted..." << endl;
+                f = r = -1;
+            }
+            else
+            {
+                cout << q[f] << " Deleted..." << endl;
+                f++;
+            }
+        }
+    }
+    void display()
+    {
+        if (isempty() == 1)
+        {
+            cout << "Queue is underflow... " << endl;
+        }
+        else
+        {
+            for (int i = f; i <= r; i++)
+            {
+                cout << q[i] << " ";
+            }
+            cout << endl;
+        }
+    }
+};
+int main()
+{
+    queue o;
+    int ch;
+    string x;
+    char ch1;
+    do
+    {
+        cout<<endl;
+        cout << "1)Add job\n2)Delete job\n3)Display job queue\n"
+             << endl;
+        cout << "Enter choice : ";
+        cin >> ch;
+        switch (ch)
+        {
+        case 1:
+            cout << "Enter job : ";
+            cin >> x;
+            o.enqueue(x);
+            break;
+        case 2:
+            o.dequeue();
+            break;
+        case 3:
+            o.display();
+            break;
+        }
+        cout << "Do you want to continue(y/n) : ";
+        cin >> ch1;
+    } while (ch1 == 'y' || ch1 == 'Y');
+    return 0;
+}
