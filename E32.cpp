@@ -1,3 +1,8 @@
+/*Pizza parlor accepting maximum M orders. Orders are served in first come first served
+basis. Order once placed cannot be cancelled. Write C++ program to simulate the system
+using circular queue using array.*/
+
+
 #include <iostream>
 #define size 10
 using namespace std;
