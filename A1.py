@@ -1,3 +1,14 @@
+'''In second year computer engineering class, group A student’s play cricket, group B
+students play badminton and group C students play football.
+Write a Python program using functions to compute following: -
+a) List of students who play both cricket and badminton
+b) List of students who play either cricket or badminton but not both
+c) Number of students who play neither cricket nor badminton
+d) Number of students who play cricket and football but not badminton.
+(Note- While realizing the group, duplicate entries should be avoided, Do not use SET
+built-in functions) '''
+
+
 groupA,groupB,groupC,a,b,c=[],[],[],[],[],[]
 def cricket():
     p=int(input("enter no. of students playing cricket : "))
